@@ -1,0 +1,50 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head th:replace="layout :: head"></head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-2">
+    <div class="container">
+        <a class="navbar-brand" href="#">Admin Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+            <ul class="navbar-nav">
+                <li><a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a></li>
+                <li><a class="nav-item nav-link" href="/student">Student-List</a></li>
+                <li class="nav-item nav-link"> <form  th:action="@{/logout}" method="post">
+                    <button type="submit">Logout</button>
+                </form></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <h3> Register New Student</h3>
+        <div th:replace="layout :: flash"></div>
+        <div class="card card-body">
+            <h3 class="text-center">Account Register</h3>
+            <form method="post" th:action="@{/student}">
+                <input type="hidden"  name="enabled" value="true">
+                <input type="hidden"  name="role_id" value=2>
+                <div class="form-group">
+                    <label for="name">Username</label>
+                    <input type="name" name="username"  required class="form-control"  >
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password"  required class="form-control"  >
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="layout :: scripts"></div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card card-body">
+            <div th:replace="layout :: flash"></div>
+            <h3 class="text-center">Account Login</h3>
+            <form th:action="@{/login}" th:object="${user}" method="post">
+                <div class="form-group">
+                    <label for="name">Username</label>
+                    <input th:field="*{username}" placeholder="username" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="name">Password</label>
+                    <input type="password" th:field="*{password}" placeholder="password" class="form-control"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="layout :: scripts"></div>
+</body>
+</html>
